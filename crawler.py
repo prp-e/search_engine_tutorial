@@ -18,7 +18,7 @@ def crawl(url):
     except:
         pass 
 
-    content = BeautifulSoup(url, 'lxml')
+    content = BeautifulSoup(response.text, 'lxml')
     links = content.findAll('a')
 
     print(len(links))
