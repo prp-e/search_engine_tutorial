@@ -21,4 +21,24 @@ def crawl(url):
     content = BeautifulSoup(response.text, 'lxml')
     links = content.findAll('a')
 
-    print(len(links))
+    # Information from the link 
+    #   1. URL
+    #   2. Title (<title></title>)
+    #   3. A lot of words! (<p></p>)
+
+    try:
+        title = content.find('title').text 
+        description = ''
+
+        for p in content.findAll('p'):
+            description += p.text.replace('\n', ' ')
+    except:
+        return 
+
+    result = {
+        'title': title, 
+        'url': url, 
+        'description': description[64:]
+    }
+
+    print(result)
