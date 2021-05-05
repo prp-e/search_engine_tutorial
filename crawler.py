@@ -11,9 +11,9 @@
 from bs4 import BeautifulSoup 
 import requests
 
-def crawl(url):
+def crawl(url, depth):
     try:
-        print(f'Crawling {url}')
+        print(f'Crawling {url} in depth of {depth}')
         response = requests.get(url)
     except:
         pass 
@@ -41,4 +41,12 @@ def crawl(url):
         'description': description[64:]
     }
 
-    print(result)
+    if depth == 0:
+        return
+
+    for link in links:
+        try:
+            if 'http' in link['href']:
+                crawl(link['href'], depth - 1)
+        except KeyError as e:
+            pass
