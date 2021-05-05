@@ -31,7 +31,7 @@ def crawl(url):
         description = ''
 
         for p in content.findAll('p'):
-            description += p.text.replace('\n', ' ')
+            description += p.text.strip().replace('\n', ' ')
     except:
         return 
 
