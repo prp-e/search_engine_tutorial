@@ -9,7 +9,12 @@
 #   3. Does the same for other links. 
 
 from bs4 import BeautifulSoup 
+import pymongo
 import requests
+
+DB_CONNECTION = pymongo.MongoClient('mongodb://127.0.0.1:27017')
+DB = DB_CONNECTION.search_results_lor 
+INDEXED_LINKS = DB.indexed_results 
 
 def crawl(url, depth):
     try:
