@@ -43,7 +43,7 @@ def crawl(url, depth):
     result = {
         'title': title, 
         'url': url, 
-        'description': description[64:]
+        'description': description
     }
 
     if depth == 0:
