@@ -20,7 +20,7 @@ def crawl(url, depth):
     try:
         print(f'Crawling {url} in depth of {depth}')
         response = requests.get(url)
-    except:
+    except UnboundLocalError:
         pass 
 
     content = BeautifulSoup(response.text, 'lxml')
